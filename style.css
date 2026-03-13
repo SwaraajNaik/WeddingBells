@@ -955,7 +955,7 @@ footer {
 
 .copyright-heart {
   color: var(--crimson);
-  font-size: 15px;
+  font-size: 18px;
   animation: heartbeat 2s ease-in-out infinite;
   display: inline-block;
   margin: 0 4px;
