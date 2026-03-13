@@ -941,21 +941,21 @@ footer {
   text-align: center;
   padding: 12px 20px;
   font-family: 'Cinzel', serif;
-  font-size: clamp(9px, 2vw, 11px);
-  letter-spacing: 3px;
+  font-size: clamp(12px, 3vw, 15px);
+  letter-spacing: 4px;
   color: rgba(200,146,10,0.4);
   text-transform: uppercase;
 }
 
 .copyright-name {
   color: rgba(200,146,10,0.7);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 4px;
 }
 
 .copyright-heart {
   color: var(--crimson);
-  font-size: 13px;
+  font-size: 15px;
   animation: heartbeat 2s ease-in-out infinite;
   display: inline-block;
   margin: 0 4px;
