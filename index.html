@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ishwar & Baishakhi — Wedding Invitation</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+Oriya:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --crimson: #6d0d0d;
+      --crimson-deep: #4a0808;
+      --gold: #c8920a;
+      --gold-light: #e8b84b;
+      --gold-pale: #f5dfa0;
+      --ivory: #fdf8ed;
+      --ivory-warm: #f8f0d8;
+      --maroon: #800020;
+      --brown: #3d1a00;
+      --cream: #fef9f0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--ivory);
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--brown);
+      overflow-x: hidden;
+    }
+
+    /* ── BACKGROUND TEXTURE ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse at 15% 15%, rgba(200, 146, 10, 0.06) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 85%, rgba(109, 13, 13, 0.06) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 15%, rgba(200, 146, 10, 0.04) 0%, transparent 45%),
+        radial-gradient(ellipse at 15% 85%, rgba(109, 13, 13, 0.04) 0%, transparent 45%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── SVG HELPERS ── */
+    .band-svg {
+      width: 100%;
+      display: block;
+    }
+
+    /* ── IKAT BORDER ── */
+    .ikat-band {
+      width: 100%;
+      height: 28px;
+      background: var(--crimson);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ikat-band svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── OUTER WRAPPER ── */
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      background: var(--cream);
+      box-shadow:
+        0 0 0 3px var(--gold),
+        0 0 0 7px var(--ivory-warm),
+        0 0 0 10px var(--gold),
+        0 0 60px rgba(0, 0, 0, 0.25),
+        0 0 120px rgba(109, 13, 13, 0.1);
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(175deg, var(--crimson-deep) 0%, var(--crimson) 60%, #8b1a1a 100%);
+      padding: 40px 30px 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(232, 184, 75, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 50%, rgba(232, 184, 75, 0.08) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    /* Mandala watermark */
+    header::after {
+      content: '';
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 1px solid rgba(232, 184, 75, 0.12);
+      box-shadow:
+        0 0 0 20px rgba(232, 184, 75, 0.06),
+        0 0 0 40px rgba(232, 184, 75, 0.04),
+        0 0 0 60px rgba(232, 184, 75, 0.025),
+        0 0 0 80px rgba(232, 184, 75, 0.015);
+      pointer-events: none;
+    }
+
+    .ganesha-icon {
+      font-size: 52px;
+      display: block;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+      animation: sanctify 3s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 12px rgba(232, 184, 75, 0.5));
+    }
+
+    @keyframes sanctify {
+      from {
+        filter: drop-shadow(0 0 8px rgba(232, 184, 75, 0.3));
+        transform: scale(1);
+      }
+
+      to {
+        filter: drop-shadow(0 0 20px rgba(232, 184, 75, 0.7));
+        transform: scale(1.04);
+      }
+    }
+
+    .mantra {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(9px, 2vw, 11px);
+      color: var(--gold-pale);
+      letter-spacing: 2.5px;
+      line-height: 1.9;
+      position: relative;
+      z-index: 1;
+      max-width: 480px;
+      margin: 0 auto 18px;
+      opacity: 0.92;
+    }
+
+    .mantra-deco {
+      color: var(--gold-light);
+      font-size: 18px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* ── GOLD STRIP ── */
+    .gold-strip {
+      height: 5px;
+      background: linear-gradient(90deg, var(--crimson), var(--gold), var(--gold-light), var(--gold), var(--crimson));
+    }
+
+    /* ── NAMES SECTION ── */
+    .names-section {
+      background: linear-gradient(180deg, #fdf6e3 0%, var(--ivory-warm) 100%);
+      text-align: center;
+      padding: 44px 30px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* subtle corner flourishes */
+    .names-section::before,
+    .names-section::after {
+      content: '❧';
+      position: absolute;
+      font-size: 60px;
+      color: rgba(200, 146, 10, 0.1);
+      line-height: 1;
+    }
+
+    .names-section::before {
+      top: 10px;
+      left: 16px;
+    }
+
+    .names-section::after {
+      bottom: 10px;
+      right: 16px;
+      transform: scaleX(-1);
+    }
+
+    .invitation-label {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(9px, 2.2vw, 11px);
+      letter-spacing: 5px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .blessing-line {
+      font-style: italic;
+      font-size: clamp(13px, 3vw, 15px);
+      color: #7a4a00;
+      margin-bottom: 20px;
+    }
+
+    .couple-wrap {
+      margin: 4px 0 16px;
+    }
+
+    .groom-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(28px, 7vw, 44px);
+      color: var(--crimson);
+      font-weight: 700;
+      line-height: 1.1;
+      text-shadow: 2px 2px 0 rgba(200, 146, 10, 0.2);
+    }
+
+    .nickname {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(13px, 3vw, 16px);
+      color: var(--gold);
+      font-style: italic;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .weds-line {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(11px, 2.5vw, 13px);
+      letter-spacing: 8px;
+      color: var(--gold);
+      padding: 14px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .weds-line::before,
+    .weds-line::after {
+      content: '';
+      flex: 1;
+      max-width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+
+    .weds-line::after {
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .bride-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(28px, 7vw, 44px);
+      color: var(--maroon);
+      font-weight: 700;
+      line-height: 1.1;
+      text-shadow: 2px 2px 0 rgba(200, 146, 10, 0.2);
+    }
+
+    /* ── ORNAMENT DIVIDER ── */
+    .ornament-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 6px 40px;
+      background: var(--ivory-warm);
+    }
+
+    .ornament-divider .line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-light));
+    }
+
+    .ornament-divider .line.r {
+      background: linear-gradient(90deg, var(--gold-light), transparent);
+    }
+
+    .ornament-divider .gem {
+      color: var(--gold);
+      font-size: 20px;
+    }
+
+    /* ── SCHEDULE ── */
+    .schedule-section {
+      padding: 36px 24px 40px;
+      background: var(--ivory);
+      position: relative;
+    }
+
+    .schedule-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(11px, 2.5vw, 13px);
+      letter-spacing: 6px;
+      color: var(--gold);
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .day-card {
+      border: 1.5px solid var(--gold);
+      background: linear-gradient(135deg, #fffdf5 0%, #fef7e0 100%);
+      border-radius: 2px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .day-card:hover {
+      box-shadow: 0 6px 30px rgba(200, 146, 10, 0.15);
+    }
+
+    /* left accent bar */
+    .day-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      background: linear-gradient(180deg, var(--gold), var(--crimson), var(--gold));
+    }
+
+    .day-card-inner {
+      padding: 18px 20px 18px 28px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .day-date-col {
+      min-width: 80px;
+      text-align: center;
+      padding-right: 16px;
+      border-right: 1px solid rgba(200, 146, 10, 0.3);
+      flex-shrink: 0;
+    }
+
+    .day-num {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(28px, 6vw, 38px);
+      color: var(--crimson);
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .day-month {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      display: block;
+      margin-top: 2px;
+    }
+
+    .day-dow {
+      font-size: 11px;
+      color: #9a6a00;
+      font-style: italic;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .day-events-col {
+      flex: 1;
+    }
+
+    .event-item {
+      margin-bottom: 10px;
+    }
+
+    .event-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .event-time {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .event-name {
+      font-size: clamp(14px, 3.5vw, 17px);
+      font-weight: 700;
+      color: var(--crimson);
+      line-height: 1.2;
+    }
+
+    .event-sub {
+      font-size: clamp(11px, 2.5vw, 13px);
+      color: #7a5000;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .event-dot {
+      color: var(--gold);
+      margin-right: 4px;
+    }
+
+    /* corner ornament on day card */
+    .day-card .card-gem {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 18px;
+      color: rgba(200, 146, 10, 0.3);
+    }
+
+    /* ── INVITE MESSAGE ── */
+    .invite-section {
+      background: linear-gradient(160deg, var(--crimson-deep) 0%, var(--crimson) 100%);
+      padding: 40px 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .invite-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(232, 184, 75, 0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .invite-lotus {
+      font-size: 36px;
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .invite-msg {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(15px, 4vw, 19px);
+      color: var(--gold-pale);
+      font-style: italic;
+      line-height: 1.9;
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .invite-quote-mark {
+      font-size: 60px;
+      color: rgba(232, 184, 75, 0.25);
+      line-height: 0;
+      vertical-align: -24px;
+      font-family: Georgia, serif;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--crimson-deep);
+      padding: 24px 20px 28px;
+      text-align: center;
+    }
+
+    .footer-motifs {
+      font-size: 22px;
+      letter-spacing: 10px;
+      color: var(--gold-light);
+      opacity: 0.7;
+      margin-bottom: 12px;
+    }
+
+    .footer-names {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(10px, 2.5vw, 13px);
+      letter-spacing: 4px;
+      color: var(--gold-pale);
+      opacity: 0.85;
+    }
+
+    .footer-odia {
+      font-family: 'Noto Serif Oriya', serif;
+      font-size: 12px;
+      color: rgba(245, 223, 160, 0.6);
+      margin-top: 8px;
+      letter-spacing: 1px;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.9s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .fade-in:nth-child(2) {
+      animation-delay: 0.25s;
+    }
+
+    .fade-in:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    .fade-in:nth-child(4) {
+      animation-delay: 0.55s;
+    }
+
+    .fade-in:nth-child(5) {
+      animation-delay: 0.7s;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      header {
+        padding: 30px 18px 24px;
+      }
+
+      .names-section {
+        padding: 32px 18px 28px;
+      }
+
+      .schedule-section {
+        padding: 28px 12px 32px;
+      }
+
+      .day-card-inner {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .day-date-col {
+        border-right: none;
+        border-bottom: 1px solid rgba(200, 146, 10, 0.3);
+        padding-right: 0;
+        padding-bottom: 10px;
+        text-align: left;
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+      }
+
+      .invite-section {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- ══ TOP IKAT BAND ══ -->
+    <div class="ikat-band">
+      <svg viewBox="0 0 600 28" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="28" fill="#4a0808" />
+        <!-- Sambalpuri ikat diamond repeat -->
+        <g fill="none" stroke="#e8b84b" stroke-width="1">
+          <path d="M0,14 L14,2 L28,14 L14,26Z" />
+          <path d="M28,14 L42,2 L56,14 L42,26Z" />
+          <path d="M56,14 L70,2 L84,14 L70,26Z" />
+          <path d="M84,14 L98,2 L112,14 L98,26Z" />
+          <path d="M112,14 L126,2 L140,14 L126,26Z" />
+          <path d="M140,14 L154,2 L168,14 L154,26Z" />
+          <path d="M168,14 L182,2 L196,14 L182,26Z" />
+          <path d="M196,14 L210,2 L224,14 L210,26Z" />
+          <path d="M224,14 L238,2 L252,14 L238,26Z" />
+          <path d="M252,14 L266,2 L280,14 L266,26Z" />
+          <path d="M280,14 L294,2 L308,14 L294,26Z" />
+          <path d="M308,14 L322,2 L336,14 L322,26Z" />
+          <path d="M336,14 L350,2 L364,14 L350,26Z" />
+          <path d="M364,14 L378,2 L392,14 L378,26Z" />
+          <path d="M392,14 L406,2 L420,14 L406,26Z" />
+          <path d="M420,14 L434,2 L448,14 L434,26Z" />
+          <path d="M448,14 L462,2 L476,14 L462,26Z" />
+          <path d="M476,14 L490,2 L504,14 L490,26Z" />
+          <path d="M504,14 L518,2 L532,14 L518,26Z" />
+          <path d="M532,14 L546,2 L560,14 L546,26Z" />
+          <path d="M560,14 L574,2 L588,14 L574,26Z" />
+        </g>
+        <g fill="#e8b84b">
+          <circle cx="14" cy="14" r="2.5" />
+          <circle cx="42" cy="14" r="2.5" />
+          <circle cx="70" cy="14" r="2.5" />
+          <circle cx="98" cy="14" r="2.5" />
+          <circle cx="126" cy="14" r="2.5" />
+          <circle cx="154" cy="14" r="2.5" />
+          <circle cx="182" cy="14" r="2.5" />
+          <circle cx="210" cy="14" r="2.5" />
+          <circle cx="238" cy="14" r="2.5" />
+          <circle cx="266" cy="14" r="2.5" />
+          <circle cx="294" cy="14" r="2.5" />
+          <circle cx="322" cy="14" r="2.5" />
+          <circle cx="350" cy="14" r="2.5" />
+          <circle cx="378" cy="14" r="2.5" />
+          <circle cx="406" cy="14" r="2.5" />
+          <circle cx="434" cy="14" r="2.5" />
+          <circle cx="462" cy="14" r="2.5" />
+          <circle cx="490" cy="14" r="2.5" />
+          <circle cx="518" cy="14" r="2.5" />
+          <circle cx="546" cy="14" r="2.5" />
+        </g>
+        <!-- Top & bottom gold lines -->
+        <line x1="0" y1="1.5" x2="600" y2="1.5" stroke="#c8920a" stroke-width="1.5" />
+        <line x1="0" y1="26.5" x2="600" y2="26.5" stroke="#c8920a" stroke-width="1.5" />
+      </svg>
+    </div>
+
+    <!-- ══ HEADER ══ -->
+    <header>
+      <span class="ganesha-icon">🐘</span>
+
+      <div class="mantra">
+        <span class="mantra-deco">✦ ॐ ✦</span>
+        Vakratunda Mahakaya Suryakoti Samaprabha<br>
+        Nirvighnam Kurume Deva Sarva Karyeshu Sarvada
+      </div>
+
+      <!-- Jagannath temple SVG motif -->
+      <svg width="160" height="30" viewBox="0 0 160 30" xmlns="http://www.w3.org/2000/svg"
+        style="display:block;margin:0 auto;opacity:0.7">
+        <g fill="none" stroke="#e8b84b" stroke-width="1">
+          <path
+            d="M0,15 Q10,5 20,15 Q30,25 40,15 Q50,5 60,15 Q70,25 80,15 Q90,5 100,15 Q110,25 120,15 Q130,5 140,15 Q150,25 160,15" />
+          <path
+            d="M0,20 Q10,10 20,20 Q30,28 40,20 Q50,10 60,20 Q70,28 80,20 Q90,10 100,20 Q110,28 120,20 Q130,10 140,20 Q150,28 160,20" />
+        </g>
+        <g fill="#e8b84b" opacity="0.6">
+          <circle cx="20" cy="15" r="2" />
+          <circle cx="60" cy="15" r="2" />
+          <circle cx="100" cy="15" r="2" />
+          <circle cx="140" cy="15" r="2" />
+        </g>
+      </svg>
+    </header>
+
+    <div class="gold-strip"></div>
+
+    <!-- ══ NAMES ══ -->
+    <div class="names-section">
+      <p class="invitation-label">✦ Wedding Invitation ✦</p>
+      <p class="blessing-line">With divine blessings of Lord Jagannath</p>
+
+      <div class="couple-wrap">
+        <div class="groom-name">Ishwar</div>
+        <span class="nickname">(Swaraaj)</span>
+      </div>
+
+      <div class="weds-line">WEDS</div>
+
+      <div class="couple-wrap">
+        <div class="bride-name">Baishakhi</div>
+        <span class="nickname" style="color:var(--maroon)">(Munni)</span>
+      </div>
+
+      <!-- Lotus SVG -->
+      <svg width="180" height="50" viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg"
+        style="display:block;margin:18px auto 0">
+        <!-- Lotus petals -->
+        <g fill="none" stroke="#c8920a" stroke-width="1.2" opacity="0.7">
+          <path d="M90,40 Q70,20 90,10 Q110,20 90,40Z" />
+          <path d="M90,40 Q65,25 60,10 Q80,8 90,40Z" />
+          <path d="M90,40 Q115,25 120,10 Q100,8 90,40Z" />
+          <path d="M90,40 Q60,35 50,20 Q65,12 90,40Z" />
+          <path d="M90,40 Q120,35 130,20 Q115,12 90,40Z" />
+        </g>
+        <circle cx="90" cy="40" r="4" fill="#c8920a" opacity="0.8" />
+        <!-- Conch left -->
+        <g transform="translate(30,22)" fill="none" stroke="#c8920a" stroke-width="1" opacity="0.5">
+          <path d="M0,0 Q8,-8 14,0 Q8,8 0,0Z" />
+          <path d="M14,0 Q18,-4 16,4 Q12,6 14,0Z" />
+          <line x1="0" y1="0" x2="-6" y2="4" />
+        </g>
+        <!-- Chakra right -->
+        <g transform="translate(140,22)" fill="none" stroke="#c8920a" stroke-width="1" opacity="0.5">
+          <circle cx="0" cy="0" r="8" />
+          <circle cx="0" cy="0" r="3" />
+          <line x1="0" y1="-8" x2="0" y2="8" />
+          <line x1="-8" y1="0" x2="8" y2="0" />
+          <line x1="-6" y1="-6" x2="6" y2="6" />
+          <line x1="6" y1="-6" x2="-6" y2="6" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- ══ ORNAMENT DIVIDER ══ -->
+    <div class="ornament-divider">
+      <div class="line"></div>
+      <span class="gem">❧</span>
+      <span class="gem" style="font-size:14px">🪷</span>
+      <span class="gem">❧</span>
+      <div class="line r"></div>
+    </div>
+
+    <!-- ══ SCHEDULE ══ -->
+    <section class="schedule-section">
+      <p class="schedule-title">✦ Ceremony Schedule ✦</p>
+
+      <!-- Day 1 -->
+      <div class="day-card fade-in">
+        <span class="card-gem">✦</span>
+        <div class="day-card-inner">
+          <div class="day-date-col">
+            <div class="day-num">8</div>
+            <span class="day-month">MAY 2026</span>
+            <span class="day-dow">Friday</span>
+          </div>
+          <div class="day-events-col">
+            <div class="event-item">
+              <span class="event-name"><span class="event-dot">✦</span>Tel Chadha</span>
+              <p class="event-sub">Oil Anointing Ceremony</p>
+            </div>
+            <div class="event-item">
+              <span class="event-name"><span class="event-dot">✦</span>Nadia Phuta</span>
+              <p class="event-sub">Coconut Breaking Ritual</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="day-card fade-in">
+        <span class="card-gem">🌸</span>
+        <div class="day-card-inner">
+          <div class="day-date-col">
+            <div class="day-num">9</div>
+            <span class="day-month">MAY 2026</span>
+            <span class="day-dow">Saturday</span>
+          </div>
+          <div class="day-events-col">
+            <div class="event-item">
+              <span class="event-name"><span class="event-dot">✦</span>Haldi Ceremony</span>
+              <p class="event-sub">Turmeric blessings for the couple</p>
+            </div>
+            <div class="event-item">
+              <span class="event-name"><span class="event-dot">✦</span>Grama Devata Puja</span>
+              <p class="event-sub">Prayers to the village deity</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 3 -->
+      <div class="day-card fade-in">
+        <span class="card-gem">🐘</span>
+        <div class="day-card-inner">
+          <div class="day-date-col">
+            <div class="day-num">10</div>
+            <span class="day-month">MAY 2026</span>
+            <span class="day-dow">Sunday</span>
+          </div>
+          <div class="day-events-col">
+            <div class="event-item">
+              <span class="event-time">9:00 AM</span>
+              <span class="event-name"><span class="event-dot">✦</span>Baarat Agaman</span>
+              <p class="event-sub">Groom's procession departs from Sundergarh</p>
+            </div>
+            <div class="event-item">
+              <span class="event-time">6:00 PM</span>
+              <span class="event-name"><span class="event-dot">✦</span>Arrival at Cuttack</span>
+              <p class="event-sub">Welcome of the Baarat</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 4 -->
+      <div class="day-card fade-in">
+        <span class="card-gem">🪷</span>
+        <div class="day-card-inner">
+          <div class="day-date-col">
+            <div class="day-num">11</div>
+            <span class="day-month">MAY 2026</span>
+            <span class="day-dow">Monday</span>
+          </div>
+          <div class="day-events-col">
+            <div class="event-item">
+              <span class="event-time">1:00 AM — Auspicious Muhurta</span>
+              <span class="event-name"><span class="event-dot">✦</span>Wedding Ritual</span>
+              <p class="event-sub">Sacred vows under the sacred fire</p>
+            </div>
+            <div class="event-item">
+              <span class="event-time">Morning</span>
+              <span class="event-name"><span class="event-dot">✦</span>Stree Bidaya</span>
+              <p class="event-sub">Farewell of the bride with family blessings</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 5 -->
+      <div class="day-card fade-in">
+        <span class="card-gem">🌟</span>
+        <div class="day-card-inner">
+          <div class="day-date-col">
+            <div class="day-num">12</div>
+            <span class="day-month">MAY 2026</span>
+            <span class="day-dow">Tuesday</span>
+          </div>
+          <div class="day-events-col">
+            <div class="event-item">
+              <span class="event-time">7:30 PM onwards</span>
+              <span class="event-name"><span class="event-dot">✦</span>Reception</span>
+              <p class="event-sub">Celebrate with the newlyweds — dinner & festivities</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══ ORNAMENT DIVIDER ══ -->
+    <div class="ornament-divider" style="background:var(--ivory-warm)">
+      <div class="line"></div>
+      <span class="gem">✦</span>
+      <span class="gem" style="font-size:16px">🕉</span>
+      <span class="gem">✦</span>
+      <div class="line r"></div>
+    </div>
+
+    <!-- ══ INVITE MESSAGE ══ -->
+    <section class="invite-section">
+      <span class="invite-lotus">🪷</span>
+      <p class="invite-msg">
+        <span class="invite-quote-mark">"</span>
+        We cordially invite you and your family to grace the occasion with your presence and bless the couple.
+        <span class="invite-quote-mark">"</span>
+      </p>
+
+      <!-- decorative bottom motif -->
+      <svg width="200" height="24" viewBox="0 0 200 24" xmlns="http://www.w3.org/2000/svg"
+        style="display:block;margin:20px auto 0;opacity:0.5">
+        <g fill="none" stroke="#e8b84b" stroke-width="1">
+          <path d="M0,12 Q25,4 50,12 Q75,20 100,12 Q125,4 150,12 Q175,20 200,12" />
+        </g>
+        <g fill="#e8b84b">
+          <circle cx="50" cy="12" r="2.5" />
+          <circle cx="100" cy="12" r="2.5" />
+          <circle cx="150" cy="12" r="2.5" />
+        </g>
+      </svg>
+    </section>
+
+    <!-- ══ FOOTER ══ -->
+    <footer>
+      <div class="ikat-band" style="margin-bottom:18px">
+        <svg viewBox="0 0 600 28" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="28" fill="#3a0606" />
+          <g fill="none" stroke="#c8920a" stroke-width="0.8">
+            <path d="M0,14 L14,2 L28,14 L14,26Z" />
+            <path d="M28,14 L42,2 L56,14 L42,26Z" />
+            <path d="M56,14 L70,2 L84,14 L70,26Z" />
+            <path d="M84,14 L98,2 L112,14 L98,26Z" />
+            <path d="M112,14 L126,2 L140,14 L126,26Z" />
+            <path d="M140,14 L154,2 L168,14 L154,26Z" />
+            <path d="M168,14 L182,2 L196,14 L182,26Z" />
+            <path d="M196,14 L210,2 L224,14 L210,26Z" />
+            <path d="M224,14 L238,2 L252,14 L238,26Z" />
+            <path d="M252,14 L266,2 L280,14 L266,26Z" />
+            <path d="M280,14 L294,2 L308,14 L294,26Z" />
+            <path d="M308,14 L322,2 L336,14 L322,26Z" />
+            <path d="M336,14 L350,2 L364,14 L350,26Z" />
+            <path d="M364,14 L378,2 L392,14 L378,26Z" />
+            <path d="M392,14 L406,2 L420,14 L406,26Z" />
+            <path d="M420,14 L434,2 L448,14 L434,26Z" />
+            <path d="M448,14 L462,2 L476,14 L462,26Z" />
+            <path d="M476,14 L490,2 L504,14 L490,26Z" />
+            <path d="M504,14 L518,2 L532,14 L518,26Z" />
+            <path d="M532,14 L546,2 L560,14 L546,26Z" />
+          </g>
+          <g fill="#c8920a" opacity="0.7">
+            <circle cx="14" cy="14" r="2" />
+            <circle cx="42" cy="14" r="2" />
+            <circle cx="70" cy="14" r="2" />
+            <circle cx="98" cy="14" r="2" />
+            <circle cx="126" cy="14" r="2" />
+            <circle cx="154" cy="14" r="2" />
+            <circle cx="182" cy="14" r="2" />
+            <circle cx="210" cy="14" r="2" />
+            <circle cx="238" cy="14" r="2" />
+            <circle cx="266" cy="14" r="2" />
+            <circle cx="294" cy="14" r="2" />
+            <circle cx="322" cy="14" r="2" />
+            <circle cx="350" cy="14" r="2" />
+            <circle cx="378" cy="14" r="2" />
+          </g>
+        </svg>
+      </div>
+      <div class="footer-motifs">🪷 🐚 ☸️ 🪷</div>
+      <div class="footer-names">ISHWAR & BAISHAKHI — MAY 2026</div>
+      <div class="footer-odia">ଜଗନ୍ନାଥ ଙ୍କ ଆଶୀର୍ବାଦ ଆପଣଙ୍କ ସହ ରହୁ</div>
+    </footer>
+
+  </div>
+
+</body>
+
+</html>
